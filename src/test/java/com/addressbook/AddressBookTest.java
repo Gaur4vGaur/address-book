@@ -3,6 +3,7 @@ package com.addressbook;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AddressBookTest {
 
@@ -12,5 +13,11 @@ public class AddressBookTest {
     public void countMaleTest() {
         addressBook = new AddressBook();
         assertEquals("count of males must be 3", 3, addressBook.countMales());
+    }
+
+    @Test
+    public void readFileTest() {
+        addressBook = new AddressBook();
+        assertTrue("must have read the file while instantiating the class", addressBook.addressList.size() > 0);
     }
 }
