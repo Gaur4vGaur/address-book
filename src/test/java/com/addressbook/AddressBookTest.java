@@ -26,4 +26,10 @@ public class AddressBookTest {
         addressBook = new AddressBook();
         assertEquals("oldest person must be Wes Jackson", "Wes Jackson", addressBook.oldestPerson());
     }
+
+    @Test
+    public void ageDifferenceTest() {
+        addressBook = new AddressBook();
+        assertEquals("age difference between Paul and Bill is not correct", 2862, addressBook.ageDifference());
+    }
 }
