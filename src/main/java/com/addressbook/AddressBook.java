@@ -3,7 +3,10 @@ package com.addressbook;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,6 +25,18 @@ public class AddressBook {
 
     public long countMales() {
         return addressList.stream().filter(input -> input[GENDER].equals("Male")).count();
+    }
+
+    public String oldestPerson() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+        Comparator<String[]> byDate =
+                (String[] array1, String[] array2) ->
+                        LocalDate.parse(array1[DATE], formatter).isBefore(
+                                LocalDate.parse(array1[DATE], formatter)) ? -1 : 1;
+
+        String array[] = addressList.stream().min(byDate).get();
+
+        return array[NAME];
     }
 
     private void readFile() {

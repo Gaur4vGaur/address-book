@@ -20,4 +20,10 @@ public class AddressBookTest {
         addressBook = new AddressBook();
         assertTrue("must have read the file while instantiating the class", addressBook.addressList.size() > 0);
     }
+
+    @Test
+    public void oldestPersonTest() {
+        addressBook = new AddressBook();
+        assertEquals("oldest person must be Wes Jackson", "Wes Jackson", addressBook.oldestPerson());
+    }
 }
